@@ -24,7 +24,8 @@ mini project challenge launched by Frontend Mentor
 ![dsk-dark]  
 ![dsk-light]
   
-手机版：
+手机版：  
+
 ![mobdark][mob-dark]
 ![mob-light]
   
