@@ -24,9 +24,10 @@ import React from "react";
 import { TodoListItem } from "./TodoListItem";
 
 export const TodoList = (props)=>{
-    const {todos,filterStatus,setTodos,setTodoStatus}=props;
+    const {todos,filterStatus,handleToggle,handleDelete}=props;
     
     //! 只筛选没被清除的内容/被选中status的内容——后者需要一个参数filterStatus记录现在被选中的status是什么
+    //! error：筛选无显示   reason：把todo.status误写成了todo.id
     const filteredTodos = todos.filter(
         (todo)=> {
             if(todo.status==='deleted'){
@@ -35,27 +36,28 @@ export const TodoList = (props)=>{
             if(filterStatus==='all'){
                 return true;
             }else if(filterStatus==='active'){
-                return (todo.id==='active');
+                return (todo.status==='active');
             }else if(filterStatus==='completed'){
-                return(todo.id==='completed');
+                return(todo.status==='completed');
             }
             return false;
         }
     )
     
     return(
-        <div>
-            <li>
-                {filteredTodos.map((todo)=>
-                    <TodoListItem
-                        todo={todo}
-                        todos={todos}
-                        setTodos={setTodos}
-                        setTodoStatus = {setTodoStatus}
-                        key={todo.id}
-                    />
-                )}
-            </li>
-        </div>
+        <section>
+            <div className="list-group">
+                <ul className="custom-ul-style">
+                    {filteredTodos.map((todo)=>
+                        <TodoListItem
+                            targetTodo={todo}
+                            handleToggle={handleToggle}
+                            handleDelete={handleDelete}
+                            key={todo.id}
+                        />
+                    )}
+                </ul>
+            </div>
+        </section>
     )
 }

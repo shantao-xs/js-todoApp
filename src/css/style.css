@@ -1,0 +1,59 @@
+body {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 18px;
+    width: 100%;
+    /*初始化space*/
+    margin: 0;
+    padding: 0;
+  }
+
+.mainlogo{
+  color:aliceblue;
+}
+
+
+.bg-img,
+.bg-next{
+  width: 100%;
+  position: absolute;
+  z-index: 0;
+}
+
+.bg-img{
+  height: 300px;
+  top:0;
+  background-size: cover;
+}
+
+.dark-theme{
+  background-color: hsl(235, 21%, 11%);
+  color:hsl(234, 39%, 85%);
+}
+
+.light-theme{
+  background: hsl(0, 0%, 98%);
+  color:hsl(236, 9%, 61%);
+}
+
+
+
+
+section{
+  margin:auto;
+  position: relative;
+  z-index: 1;
+  max-width: 600px;
+  
+}
+
+.custom-ul-style{
+  margin: 10;
+  padding: 0;
+  
+}
+.container{
+  height: 60px;
+  margin: 0;
+}
+
+

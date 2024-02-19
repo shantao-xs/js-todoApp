@@ -11,44 +11,31 @@ import React from "react";
 
 
 export const TodoListItem = (props)=>{
-    const {todos, todo,setTodos,key,setTodoStatus} = props;
+    const {targetTodo,handleToggle,handleDelete} = props;
     //注意这里只修改todo的status
-    //! 问题出在：1. 如果一定要把函数都写在组件里而不是app.js里，会出现setTodo is not a function的报错 2.如果直接用setTodoStatus('cleared')，它并不知道要让哪个todo的status被更新，还是useReact没搞清楚的问题
-    const handleToggle = (status)=>{
-        const updatedTodo = todos.map((todo)=>{
-            if (todo.id === key){
-              return {...todo, status: todo.status === 'active' ? 'completed' : 'active'};
-            } else {
-              return todo;
-            }
-          });
-        setTodos(updatedTodo);
-    }
+   
 
-    /**const handleToggle = () => {
-        const updatedStatus = todo.status === 'active' ? 'completed' : 'active';
-        setTodoStatus({ ...todo, status: updatedStatus });
-    }*/
     
-    const handleDelete = (status)=>{
-        setTodoStatus({ ...todo, status: 'deleted' });
-    }
+    
     
     return(
-        <div>
-            <label>
+        <li className="list-group-item rounded container
+                        d-flex justify-content-between align-items-center">
+            <label className="form-check-label">
                 <input 
+                    className="form-check-input me-2"
                     type="checkbox" 
-                    onChange={()=>handleToggle(todo.status)}
-                    checked={todo.status==='completed'}
+                    onChange={()=>{handleToggle(targetTodo)}}
+                    checked={targetTodo.status==='completed'}
                 />
-                {todo.label}
-                <button
-                    onClick={()=>handleDelete(todo.status)}
-                >
-                    delete
-                </button>
+                {targetTodo.label}
             </label>
-        </div>
+            <button 
+                type="button" 
+                className="btn-close" 
+                aria-label="Close"
+                onClick={()=>{handleDelete(targetTodo)}}
+            />         
+        </li>
     )
 }

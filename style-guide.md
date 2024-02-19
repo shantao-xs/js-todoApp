@@ -40,6 +40,8 @@ The designs were created to the following widths:
 
 - Font size: 18px
 
+done:
+
 ### Font
 
 - Family: [Josefin Sans](https://fonts.google.com/specimen/Josefin+Sans)
